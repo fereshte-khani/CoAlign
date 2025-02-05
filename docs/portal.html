@@ -1,0 +1,71 @@
+
+<html>
+  <head>
+    <title>AdaTest</title>
+    <script>
+      // https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript
+      function hash(s) {
+        var hash = 0, i, chr;
+        if (s.length === 0) return hash;
+        for (i = 0; i < s.length; i++) {
+          chr   = s.charCodeAt(i);
+          hash  = ((hash << 5) - hash) + chr;
+          hash |= 0; // Convert to 32bit integer
+        }
+        return hash;
+      };
+      function loadFrame() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const user = urlParams.get('user');
+        const frame = document.getElementById("adatest_iframe");
+        const order = "order" + user[user.length-1];
+        NProgress.start();
+        //frame.src = "https://adatest.azurewebsites.net/part1_sentiment_"+order+"__" + user + "/_static/part1_sentiment_"+order+".html?user=" + user;
+        let topic = "";
+        if (order === "order3") {
+          window.location = "http://75.172.103.211:32567/"+order+"_left_review__" + user + "/_static/"+order+"_start.html?user=" + user;
+        } else if (order === "order4") {
+          window.location = "http://75.172.103.211:32567/"+order+"_right_review__" + user + "/_static/"+order+"_start.html?user=" + user;
+        } else {
+          if (user[0] == 'r') {
+            topic = order == "order1" ? "christian" : "islam";
+          } else {
+            topic = order == "order1" ? "left" : "right";
+          }
+          window.location = "http://75.172.103.211:32567/"+order+"_"+topic+"_manual__" + user + "/_static/"+order+"_start.html?user=" + user;
+        }
+        
+      }
+      window.escapeFrame = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const user = urlParams.get('user');
+        const frame = document.getElementById("adatest_iframe");
+        const order = user[user.length-1] == "1" ? "order1" : "order2";
+      }
+      window.onbeforeunload = function(e) {
+        return "If you refresh this page you will end the user study! Are you sure you want to end the user study right now?";
+      };
+    </script>
+    <script src='https://unpkg.com/nprogress@0.2.0/nprogress.js'></script>
+    <link rel='stylesheet' href='https://unpkg.com/nprogress@0.2.0/nprogress.css'/>
+  </head>
+  <body onLoad="loadFrame()" style="margin: 0px; padding: 0px; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; margin-right: 20px; font-size: 14px;">
+<!--     <script type="text/javascript">
+      fetch('https://adatest.azurewebsites.net' + window.location.pathname).then(function (response) {
+        // The API call was successful!
+        return response.text();
+      }).then(function (html) {
+        // This is the HTML from our response as a text string
+        console.log(html);
+        document.open(); http://75.172.96.15:32567/order1_christian_manual__scott/_static/order1_start.html?user=scott
+        document.write(html);
+        document.close();
+      }).catch(function (err) {
+        // There was an error
+        console.warn('Something went wrong.', err);
+      });
+    </script> -->
+    <iframe id="adatest_iframe" style="width: 100%; height: 100%; border: 0px;" onLoad="NProgress.done()"></iframe>
+    <!-- <div style="position: absolute; top: 0px; left: 0px;"><a href="javscript:escapeFrame()">Esc</a></div> -->
+  </body>
+</html>

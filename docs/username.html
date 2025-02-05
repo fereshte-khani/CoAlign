@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <title>AdaTest</title>
+    <script>
+      function beginStudy() {
+        let user = document.getElementById('user').value;
+        if (user === "") {
+          window.alert("Please enter your user name so you can begin the study.");
+        } else {
+          window.location = 'portal.html?user=' + user;
+        }
+      }
+    </script>
+  </head>
+  <body style="text-align: center; margin: 0px; padding: 0px; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; margin-right: 20px; font-size: 16px;">
+    <br>
+    <br>
+    <br>
+    <div style="font-weight: bold; font-size: 24px;">AdaTest</div><br>
+    <div style="max-width: 600px;  margin-left: auto; margin-right: auto;">
+    Welcome to the AdaTest user study! Clicking the begin button below will take you first to a login page, 
+    and then to the instructions you will need to get started. Make sure you have an hour of time blocked off and
+    are using a modern web browser (Chrome, Edge, or Safari) on a laptop/desktop computer (not a tablet or smartphone).<br>
+    </div>
+    <br>
+    Enter your user name: <input type="text" size="30" name="user" id="user" /><br>
+    <br>
+    <input type="button" onClick="beginStudy()" style="font-size: 24px;" value="Begin the user study"><br>
+    <br>
+    <br>
+    <br>
+    <a href="https://go.microsoft.com/?linkid=2028325">Contact Us</a> | <a href="https://go.microsoft.com/fwlink/?LinkId=521839">Privacy &amp; Cookies</a
+      > | <a href="https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx">Terms of Use</a> | 
+      <a href="https://go.microsoft.com/fwlink/?LinkId=506942">Trademarks</a> | &copy; 2021 Microsoft<br>
+      <br>
+  </body>
+</html>
