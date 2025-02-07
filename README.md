@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Collaborative Alignment of NLP model
 
 This is the code for https://arxiv.org/abs/2305.12219
