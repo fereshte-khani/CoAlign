@@ -1,4 +1,3 @@
--e git+https://github.com/fereshte-khani/ddbug_all_rls2.git@27c60490ada82172fe49f72c4a834c08576a5542#egg=adatest&subdirectory=coalign/adatest
 aiohttp==3.9.1
 aiohttp-security==0.5.0
 aiohttp-session==2.12.0
@@ -20,7 +19,6 @@ certifi==2023.11.17
 cffi==1.16.0
 charset-normalizer==3.3.2
 click==8.1.7
--e git+https://github.com/fereshte-khani/ddbug_all_rls2.git@27c60490ada82172fe49f72c4a834c08576a5542#egg=coalign&subdirectory=coalign
 comm==0.2.0
 contourpy==1.2.0
 cryptography==41.0.7

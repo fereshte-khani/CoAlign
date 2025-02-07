@@ -79,7 +79,7 @@ class Toxicity(Abstract_task):
         val = Dataset.from_dict({'sentence' : val_sentences, 'label': val_labels})
 
 
-        model_name_to_load = 'mohsenfayyaz/toxicity-classifier'
+        model_name_to_load = './toxic-bert'
         tokenizer = AutoTokenizer.from_pretrained(model_name_to_load)
         def tokenize_function(examples):
             return tokenizer(examples["sentence"], truncation=True)
@@ -156,13 +156,13 @@ class Toxicity(Abstract_task):
 #write main
 if __name__ == '__main__':
     task = Toxicity()
-    ds = task.load_data(num_samples=10)
-    print(ds[0])
-    model_name_to_load = 'unitary/toxic-bert'
-    model_name_to_load = 'mohsenfayyaz/toxicity-classifier'
+    # ds = task.load_data(num_samples=10)
+    # print(ds[0])
+    model_name_to_load = 'toxic-bert'
+    # model_name_to_load = 'mohsenfayyaz/toxicity-classifier'
     tokenizer = AutoTokenizer.from_pretrained(model_name_to_load)
     model = AutoModelForSequenceClassification.from_pretrained(model_name_to_load)
-    tokenizer, model = task.fine_tune_model(ds, model_name_to_load, '../fine_tuned_models/toxicity_classifier')
+    # tokenizer, model = task.fine_tune_model(None, model_name_to_load, '../fine_tuned_models/toxicity_classifier', just_upload=True)
     # model = torch.hub.load('unitaryai/detoxify','toxic_bert')
     from transformers import pipeline
     pipe = pipeline("text-classification", model=model, tokenizer=tokenizer, top_k=None, device=0)

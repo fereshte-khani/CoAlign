@@ -73,7 +73,7 @@ def adatest_to_dictionary(task, test_tree):
 
 def launching_browser(task, test_tree, scorer, predictor, dport = 5000):
     print('launching browser')
-    roberta_embed_model = sentence_transformers.SentenceTransformer('stsb-roberta-large')
+    roberta_embed_model = sentence_transformers.SentenceTransformer('/root/code/sandbox/stsb-roberta-large')
     browser = test_tree(task = task, scorer=scorer, embedding_model=roberta_embed_model, max_suggestions=100, 
     recompute_scores=True, predictor = predictor)
     import adatest
